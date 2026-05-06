@@ -1,0 +1,28 @@
+nmtui -- Interfaz de terminal para conectar a Wifi mediante NetworkManager
+cat <<archivo.txt>> -- Ver el contenido de un archivo sin abrirlo.
+pkill <<proceso>> --Matar un proceso.
+pacman -Q -- Listar todos los paquetes instalados de pacman.
+yay -Qm -- Listar paquetes instalados de yay.
+sudo pacman -Rs <<paquete>> -- Desinstalar el paquete(-R) y sus dependencias(-s).
+
+========== Comandos para extraccion de archivos ==========
+bsdtar -xf archivo.zip -- bsdtar -xf archivo.zip 
+bsdtar -xf archivo.zip -C /ruta/destino -- Extraer en una ruta específica
+bsdtar -xf archivo.zip nombre_del_archivo.txt -- Extraer archivo especifico.
+bsdtar -xvf archivo.zip -- -- Modo verboso (ver qué se está extrayendo)
+
+========== Comandos para Gestion de paquetes en Arch ==========
+sudo pacman -Syu -- Solo actualiza los paquetes oficiales de Arch.
+yay -Sua -- Solo actualiza paquetes del AUR.
+yay -- Actualiza los paquetes tanto de Arch como de AUR.
+sudo pacman -Rs $(pacman -Qdtq) -- Eliminar las dependencias que ya no se usan en los paquetes actualizados.
+yay -Ss <<paquete>> -- Buscar paquetes disponibles en AUR.
+
+========== Comandos para gestion de Archivos y Carpetas =========
+rm archivo.txt -- Eliminar un archivo
+rm *.<<extension del archivo>> -- Eliminar archivos por tipo de archivo.
+rmdir carpeta/ -- Eliminar carpeta vacia.
+rm -r carpeta/ -- Eliminar carpeta y todo su contenido.
+===TAGS=== -i para modo interactivo -v para modo verboso
+
+cliphist wipe -- Limpiar el portapapeles.

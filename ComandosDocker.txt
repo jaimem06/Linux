@@ -1,0 +1,27 @@
+COMANDOS DE DOCKER
+
+--- GESTIÓN DE CONTENEDORES ---
+docker ps               # Lista contenedores activos.
+docker ps -a            # Lista todos los contenedores (activos e inactivos).
+docker run <imagen>     # Crea e inicia un contenedor desde una imagen.
+docker stop <id/nombre> # Detiene un contenedor en ejecución.
+docker start <id/nombre># Inicia un contenedor detenido.
+docker rm <id/nombre>   # Elimina un contenedor (debe estar detenido).
+docker exec -it <id> sh # Entra a la terminal interactiva del contenedor.
+docker logs -f <id>     # Muestra los logs en tiempo real.
+
+--- GESTIÓN DE IMÁGENES ---
+docker images           # Lista las imágenes descargadas en el sistema.
+docker pull <imagen>    # Descarga una imagen desde Docker Hub.
+docker rmi <id/nombre>  # Elimina una imagen.
+docker build -t <nombre> . # Crea una imagen a partir de un Dockerfile.
+
+--- DOCKER COMPOSE (Orquestación) ---
+docker compose up -d    # Levanta los servicios en segundo plano (-d).
+docker compose down     # Detiene y elimina contenedores, redes y volúmenes.
+docker compose logs -f  # Muestra logs de todos los servicios del compose.
+docker compose ps       # Lista el estado de los servicios del proyecto.
+
+--- LIMPIEZA DEL SISTEMA ---
+docker system prune -a  # Borra contenedores detenidos, redes y todas las imágenes sin uso.
+docker volume prune     # Borra volúmenes que no están siendo usados.

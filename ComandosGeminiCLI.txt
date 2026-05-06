@@ -1,0 +1,87 @@
+================================================================================
+          ESPECIFICACIÓN TÉCNICA DE COMANDOS - GEMINI CLI
+================================================================================
+
+1. COMANDOS GLOBALES (FLAGS DE EJECUCIÓN)
+--------------------------------------------------------------------------------
+Estos parámetros se utilizan al invocar 'gemini' desde la terminal:
+
+--agent             Activa el modo agente (razonamiento y ejecución de herramientas).
+--approve           Define el modo de aprobación para acciones del agente:
+                    * default: Pide confirmación para todo.
+                    * auto_edit: Permite editar archivos sin preguntar.
+                    * yolo: Ejecución automática total (sin confirmaciones).
+--model             Especifica el modelo a utilizar (ej. gemini-1.5-pro).
+--output-format     Define el formato de salida: 'text', 'json', o 'stream-json'.
+--sandbox           Restringe la ejecución a un entorno aislado.
+--debug             Muestra logs detallados de la API y ejecución interna.
+--version           Muestra la versión instalada de la CLI.
+--help              Muestra la ayuda general del sistema.
+
+2. COMANDOS DE BARRA (INTERACTIVO / REPL)
+--------------------------------------------------------------------------------
+Comandos disponibles dentro de una sesión interactiva o modo agente:
+
+SISTEMA Y NAVEGACIÓN:
+/help               Muestra el menú de ayuda con todos los comandos disponibles.
+/exit | /quit       Finaliza la sesión actual.
+/clear              Limpia la pantalla de la terminal.
+/reset              Reinicia el contexto de la conversación actual.
+
+GESTIÓN DE CHAT (/chat):
+/chat list          Lista todas las sesiones guardadas.
+/chat save [id]     Guarda la sesión actual con un nombre específico.
+/chat resume [id]   Carga una sesión guardada previamente.
+/chat delete [id]   Elimina una sesión del historial.
+/chat share         Exporta la conversación a un archivo.
+
+CONFIGURACIÓN (/settings):
+/settings           Abre el editor de configuración (settings.json).
+/model [id]         Cambia el modelo de IA para la sesión actual.
+/theme [id]         Cambia el tema visual de la interfaz.
+/vim                Activa o desactiva el modo de edición Vim.
+
+CONTEXTO Y MEMORIA:
+/memory             Gestiona la memoria a largo plazo (archivos GEMINI.md).
+/compress           Resume el historial para liberar espacio en el contexto.
+/include-dirs       Añade directorios adicionales al contexto de búsqueda.
+
+HERRAMIENTAS Y MCP (/mcp):
+/tools              Lista todas las herramientas integradas y externas activas.
+/mcp list           Lista los servidores MCP configurados.
+/mcp install        Instala un nuevo servidor MCP.
+/mcp uninstall      Elimina un servidor MCP.
+/mcp describe       Muestra las capacidades de un servidor específico.
+/mcp refresh        Recarga los servidores y sus herramientas.
+/mcp oauth          Gestiona la autenticación para servidores externos.
+
+HABILIDADES (/skills):
+/skills list        Lista todas las habilidades instaladas.
+/skills install     Descarga e instala una nueva habilidad.
+/skills uninstall   Elimina una habilidad instalada.
+/skills link        Vincula una carpeta local como una habilidad.
+/skills enable      Activa una habilidad específica.
+/skills disable     Desactiva una habilidad específica.
+
+UTILIDADES DE SISTEMA:
+/stats              Muestra estadísticas de tokens, tiempo y cuotas.
+/copy               Copia la última respuesta del modelo al portapapeles.
+/shells             Muestra y gestiona los procesos en segundo plano del agente.
+/ide                Gestiona la integración con entornos de desarrollo (VS Code).
+/setup-github       Configura credenciales para interactuar con repositorios.
+
+3. ATAJOS DE TECLADO (MODO REPL)
+--------------------------------------------------------------------------------
+Ctrl+C              Cancela la generación de respuesta o la ejecución actual.
+Ctrl+D              Cierra la sesión (equivalente a /exit).
+Ctrl+L              Limpia la pantalla.
+Tab                 Autocompletado de comandos de barra y rutas de archivos.
+
+================================================================================
+ESTRUCTURA DE ARCHIVOS DE CONFIGURACIÓN
+--------------------------------------------------------------------------------
+~/.gemini/settings.json    Configuración global (modelo, tema, seguridad).
+~/.gemini/mcp.json         Configuración de servidores MCP.
+~/.gemini/history/         Almacenamiento de sesiones guardadas.
+.geminirc                  Configuración específica por proyecto (en la raíz).
+================================================================================

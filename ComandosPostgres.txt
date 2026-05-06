@@ -1,0 +1,40 @@
+GUÍA RÁPIDA DE POSTGRESQL
+
+I. META-COMANDOS DE PSQL (Terminal interactiva)
+-----------------------------------------------
+\l              -> Listar todas las bases de datos disponibles.
+\c [nombre_db]  -> Conectarse a una base de datos específica.
+\dt             -> Listar todas las tablas de la base de datos actual.
+\d [tabla]      -> Ver la estructura, columnas y tipos de datos de una tabla.
+\du             -> Listar todos los usuarios y sus roles/permisos.
+\df             -> Listar las funciones almacenadas.
+\x              -> Activar/desactivar el modo expandido (útil para tablas con muchas columnas).
+\q              -> Salir de la terminal de psql.
+
+II. COMANDOS SQL (Gestión de Estructura)
+----------------------------------------
+CREATE DATABASE [nombre];      -> Crear una nueva base de datos.
+DROP DATABASE [nombre];        -> Eliminar una base de datos permanentemente.
+CREATE TABLE [nombre] (...);   -> Crear una nueva tabla definiendo sus campos.
+ALTER TABLE [tabla] ADD ...;   -> Agregar una nueva columna a una tabla existente.
+DROP TABLE [nombre];           -> Borrar una tabla y todos sus datos.
+TRUNCATE TABLE [nombre];       -> Vaciar una tabla (borrar todos los registros) sin borrar la tabla.
+
+III. MANIPULACIÓN DE DATOS (DML)
+-------------------------------
+SELECT * FROM [tabla];         -> Consultar y mostrar todos los registros de una tabla.
+INSERT INTO [tabla] (...) VALUES (...); -> Insertar una nueva fila de datos.
+UPDATE [tabla] SET x=y WHERE ...;       -> Modificar datos existentes que cumplan una condición.
+DELETE FROM [tabla] WHERE ...;          -> Borrar registros específicos de una tabla.
+
+IV. GESTIÓN DE USUARIOS Y PERMISOS
+----------------------------------
+CREATE USER [usuario] WITH PASSWORD '[clave]'; -> Crear un nuevo usuario con contraseña.
+GRANT ALL PRIVILEGES ON DATABASE [db] TO [usuario]; -> Dar control total de una DB a un usuario.
+ALTER USER [usuario] WITH SUPERUSER; -> Convertir a un usuario en superusuario.
+
+V. COMANDOS DE SISTEMA (Desde la shell de Linux)
+------------------------------------------------
+pg_dump [db] > respaldo.sql    -> Crear una copia de seguridad de una base de datos.
+psql [db] < respaldo.sql       -> Restaurar una base de datos desde un archivo .sql.
+systemctl restart postgresql   -> Reiniciar el servicio de Postgres en Arch Linux.
